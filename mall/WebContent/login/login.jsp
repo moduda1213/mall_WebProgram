@@ -21,13 +21,14 @@
 	
 	<div class="form-group">
 		<form method="post" action="/mall/login/loginAction.jsp"><!-- 절대 주소 -->
-			<label for="usr">ID:</label>
-			<input type ="text" class="form-control" id="usr" name = "usersId" style="width:200px;">
+			<label for="usr">email ID:</label>
+			<input type ="text" class="form-control" id="usr" name = "usersId" style="width:300px;">
 				
 			<label for="pwd">PW:</label>
-			<input type ="password" class="form-control" id="pwd" name = "usersPw" style="width:200px;">
+			<input type ="password" class="form-control" id="pwd" name = "usersPw" style="width:300px;">
 			<div>&nbsp;</div>
-			<button type = "submit" class="btn btn-primary">로그인</button>
+			<button type = "submit" class="btn btn-secondary">로그인 </button>
+			<button type = "submit" class="btn btn-secondary"> ID/PW찾기</button>
 		</form>
 	</div>
 </div>

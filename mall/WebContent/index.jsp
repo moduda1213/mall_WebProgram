@@ -19,96 +19,28 @@
 
 
 <div class = "container">
-	<div>&nbsp;</div>
-	<div>&nbsp;</div>
-
-	<div class="row"><!-- 최상단 검색바 -->
-	  <div class="col"><h1>Goodee Shop</h1></div>
-	  <div class="col">
-			<form>
-				<input type ="text" style= "width:290px; height:39px;">
-				<button type="submit"><i class='fas fa-search' style='font-size:25px; height:30px;'></i></button>
-			</form>
-	  </div>
-	  
-	 <%
-		if(session.getAttribute("userId") == null){  // 비로그인 상태일 때만 보이는 인터페이스
-	 %>		
-	 		<div class="col">
-			  	<div class ="row">
-			  		<div class="col-sm-3"></div>
-					<div class="col-sm-3"></div>
-					<div class="col-sm-3"></div>
-					<div class="col-sm-3"></div>
-			  	</div>
-			  </div>
-			</div>
-	<%
-		}else{ 										// 로그인 상태일 때만 보이는 인터페이스
-	%>
-			<div class="col">
-			  	<div class ="row">
-			  		<div class="col-sm-3"></div>
-					<div class="col-sm-3"></div>
-					<div class="col-sm-3"><i class='fas fa-user-alt' style='font-size:48px;color:black'></i></div>
-					<div class="col-sm-3"><i class='fas fa-shopping-cart' style='font-size:48px;color:black'></i></div>
-			  	</div>
-			  </div>
-			</div>
-	<%
-		}
-	%>
-	<div>&nbsp;</div>
-	
-	<%
-		if(session.getAttribute("userId") == null){
-	%>
-		<div><!-- 로그인/회원가입 메뉴바  (비로그인 상태일 때)-->
-			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-			  <!-- Links -->
-			  <ul class="navbar-nav">
-			    <li class="nav-item" >
-			      <a class="nav-link" href="/mall/login/login.jsp">Sign In</a>
-			    </li>
-			    <li class="nav-item">
-			      <a class="nav-link" href="/mall/login/signUp.jsp">회원가입</a>
-			    </li>
-			  </ul>
-			</nav>
-		</div>
-	<%
-		}else{
-	%>
-			<div><!-- 로그인/회원가입 메뉴바  (로그인 상태일 때)-->
-				<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-				  <!-- Links -->
-				  <ul class="navbar-nav">
-				    <li class="nav-item" >
-				      <a class="nav-link" href="/mall/login/logoutAction.jsp">Sign Out</a>
-				    </li>
-				  </ul>
-				</nav>
-			</div>
-	<%
-		}
-	%>
-	<div>&nbsp;</div>
+	<div>
+			<jsp:include page = "/inc/menu.jsp"></jsp:include> 
+	</div>
 	
 	<div class="row"> <!-- 전체 카테고리3 / 이미지 배너9 -->
 		<div class="col-sm-3"> <!-- 전체 카테고리 -->
 			<div class="btn-group-vertical">
-				<div class="btn btn-primary">전체 카테고리</div>
+				<div class="btn btn-primary" style="width:200px;">전체 카테고리</div>
 				<%
 					for(Category c : categoryList1 ){
 				%>
-						<div class="btn btn-light" style="width:250px;"><%=c.CategoryName %></div>
+						<div class="btn btn-light" style="width:200px;"><%=c.CategoryName %></div>
 				<%
 					}
 				%>
 			</div>
 		</div>
-		<div class="col-sm-9">
-			<img src="<%=request.getContextPath() %>/image/Thanksgiving.jpeg"style = width:825px;><!-- request.getContextPath : 프로젝트 명을 리턴한다. -->
+		<div class="col-sm-8">
+			<div id="demo" class="carousel slide" data-ride="carousel"> <!-- 슬라이드 이미지 -->
+
+			    <img src="<%=request.getContextPath() %>/image/Thanksgiving.jpeg" style = "width:800px;" alt="Thanksgiving">
+			</div>
 		</div>
 	</div>
 	
@@ -163,6 +95,7 @@
 								<p class="card-text"><%=p.productPrice %></p>
 							</div>
 						</div>
+						<span>&nbsp;</span>
 					</td>
 			<%
 					if(i%3==0){
@@ -174,6 +107,33 @@
 			%>
 	</table>
 	
+	<%
+		NoticeDao noticeDao = new NoticeDao();
+		ArrayList<Notice> noticeList = noticeDao.selectNoticeList();
+	%>
+	<!-- 최근 공지 2개 -->
+	<div>
+		<table>
+			<tr>
+				<th>notice_id</th>
+				<th>notice_title</th>
+			</tr>
+			<%
+				for(Notice n : noticeList){
+			%>
+					<tr>
+						<td><a href="<%=request.getContextPath()%>/notice/noticeOne.jsp?noticeId=<%=n.noticeId%>"><%=n.noticeId %></a></td>
+						<td><%=n.noticeTitle %></td>
+					</tr>
+			<%
+				}
+			%>
+		</table>
+	</div>
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
 </div>
 </body>
 </html>

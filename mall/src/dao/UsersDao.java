@@ -19,6 +19,7 @@ public class UsersDao {
 			userIdPw.usersPw = rs.getString("user_pw");
 		}
 		
+		conn.close();
 		return userIdPw;
 	}
 	
@@ -27,14 +28,15 @@ public class UsersDao {
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
 		
-		String sql = "insert into user(user_id,user_pw_user_check) value(?,?,?)"; // sqlπÆ¿Ã ∆≤∑»¥Ÿ
+		String sql = "insert into user(user_id,user_pw,user_check,user_name) VALUES(?,?,?,?)"; // sqlπÆ¿Ã ∆≤∑»¥Ÿ
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1,users.usersId);
 		stmt.setString(2,users.usersPw);
 		stmt.setString(3,users.usersCheck);
-		
+		stmt.setNString(4,users.usersName);
 		stmt.executeUpdate();
 		
 		conn.close();
 	}
+	
 }

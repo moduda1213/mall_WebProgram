@@ -16,7 +16,7 @@
 	
 	<div class="form-group">
 		<form method="post" action="/mall/login/signUpAction.jsp"><!-- 절대 주소 -->
-			<label for="usr">ID:</label>
+			<label for="usr">email ID:</label>
 			<input type ="text" class="form-control" id="usr" name = "newUsersId" style="width:200px;">
 				
 			<label for="pwd">PW:</label>
@@ -27,6 +27,9 @@
 			
 			<label for="usr">아무단어:</label>
 			<input type ="text" class="form-control" id="usr" name = "newUsersCheck" style="width:200px;">
+			
+			<label for="usr">이름:</label>
+			<input type ="text" class="form-control" id="usr" name = "newUsersName" style="width:200px;">
 			<div>&nbsp;</div>
 			<button type = "submit" class="btn btn-primary">회원가입</button>
 		</form>

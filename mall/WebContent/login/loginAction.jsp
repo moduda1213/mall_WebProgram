@@ -11,6 +11,8 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
+	String addr = request.getParameter("addr"); // 현재 주소 가져오기
+	System.out.print(addr);
 	String usersId = request.getParameter("uesersId");
 	String usersPw = request.getParameter("usersPw");
 	
