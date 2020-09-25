@@ -17,10 +17,10 @@
 	}
 	
 	Users paraNewUser =new Users();
-	paraNewUser.usersId = userId;
-	paraNewUser.usersPw = userPw;
-	paraNewUser.usersCheck = userCheck;
-	paraNewUser.usersName = userName;
+	paraNewUser.setUsersId(userId);
+	paraNewUser.setUsersPw(userPw);
+	paraNewUser.setUsersCheck(userCheck);
+	paraNewUser.setUsersName(userName);
 	
 	UsersDao usersDao = new UsersDao();
 	usersDao.signUpUser(paraNewUser);

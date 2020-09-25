@@ -16,8 +16,10 @@ public class NoticeDao {
 		
 		while(rs.next()) {
 			Notice n = new Notice();
-			n.noticeId = rs.getInt("notice_id");
-			n.noticeTitle = rs.getNString("notice_title");
+			//n.noticeId = rs.getInt("notice_id");
+			n.setNoticeId(rs.getInt("notice_id"));
+			//n.noticeTitle = rs.getNString("notice_title");
+			n.setNoticeTitle(rs.getString("notice_title"));
 			list.add(n);
 		}
 		
@@ -36,10 +38,10 @@ public class NoticeDao {
 		ResultSet rs = stmt.executeQuery();
 		
 		if(rs.next()) {
-			n.noticeId = rs.getInt("notice_id");
-			n.noticeTitle = rs.getString("notice_title");
-			n.noticeContent = rs.getString("notice_content");
-			n.noticeDate = rs.getString("notice_date");
+			n.setNoticeId(rs.getInt("notice_id"));
+			n.setNoticeTitle(rs.getString("notice_title"));
+			n.setNoticeContent(rs.getString("notice_content"));
+			n.setNoticeDate(rs.getString("notice_date"));
 		}
 		
 		conn.close();

@@ -31,20 +31,20 @@
 			<jsp:include page = "/inc/menu.jsp"></jsp:include> 
 		</div>
 		
-		<h1><%=noticeOne.noticeId %>번 공지사항입니다.</h1> <!-- menu -->
+		<h1><%=noticeOne.getNoticeId() %>번 공지사항입니다.</h1> <!-- menu -->
 		
 		<div>&nbsp;</div>
 		
 		<div class ="row">
-			<div class="col-sm-2"><%=noticeOne.noticeId %>번</div>
+			<div class="col-sm-2"><%=noticeOne.getNoticeId() %>번</div>
 			<div class="col-sm-10">
-				<h5><%=noticeOne.noticeTitle %> <span class="badge badge-light"><%=noticeOne.noticeDate %></span></h5>
+				<h5><%=noticeOne.getNoticeTitle() %> <span class="badge badge-light"><%=noticeOne.getNoticeDate() %></span></h5>
 			</div>	
 		</div>
 		
 		<div>&nbsp;</div>
 		
-		<div style="width:600px; height:1200px; font-size: 25px;"><%=noticeOne.noticeContent %></div>
+		<div style="width:600px; height:1200px; font-size: 25px;"><%=noticeOne.getNoticeContent() %></div>
 	</div>
 </body>
 </html>

@@ -14,13 +14,15 @@
 </head>
 <body>
 <div class="container">
-
+	<div>
+			<jsp:include page = "/inc/menu.jsp"></jsp:include> 
+	</div>
 	<div class="jumbotron">
 	  <h1>로그인</h1>
 	</div>
 	
 	<div class="form-group">
-		<form method="post" action="/mall/login/loginAction.jsp"><!-- 절대 주소 -->
+		<form method="post" action="<%=request.getContextPath() %>/login/loginAction.jsp"><!-- 절대 주소 -->
 			<label for="usr">email ID:</label>
 			<input type ="text" class="form-control" id="usr" name = "usersId" style="width:300px;">
 				

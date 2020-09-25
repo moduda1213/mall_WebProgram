@@ -15,6 +15,7 @@
 	CategoryDao categoryDao = new CategoryDao();
 	ArrayList<Category> categoryList1 = categoryDao.selectCategoryList(); //전체 카테고리 리스트
 	ArrayList<Category> categoryList2 = categoryDao.selectCategoryCkList(); // 추천 카테고리 이미지 리스트
+	
 %>
 
 
@@ -30,7 +31,7 @@
 				<%
 					for(Category c : categoryList1 ){
 				%>
-						<div class="btn btn-light" style="width:200px;"><%=c.CategoryName %></div>
+						<div class="btn btn-light" style="width:200px;"><%=c.getCategoryName() %></div>
 				<%
 					}
 				%>
@@ -50,7 +51,7 @@
 		<%
 			for(Category c : categoryList2){
 		%>
-				<div class="col-sm-3"><a href=""><img src="<%=request.getContextPath() %>/image/<%=c.CategoryPic %>" class="rounded-circle" alt="Cinque Terre"></a></div>
+				<div class="col-sm-3"><a href=""><img src="<%=request.getContextPath() %>/image/<%=c.getCategoryPic() %>" class="rounded-circle" alt="Cinque Terre"></a></div>
 		<%
 			}
 		%>
@@ -72,7 +73,7 @@
 		<%
 			for(Product p : productList){
 		%>
-	  		<button type="button" class="btn btn-light"><%=p.productName %></button>
+	  		<button type="button" class="btn btn-light"><%=p.getProductName() %></button>
 	  	<%
 	  		}
 	  	%>
@@ -89,10 +90,14 @@
 			%>
 					<td>
 						<div class="card" style="width:375px">
-						<img class="card-img-top" src="<%=request.getContextPath()%>/image/<%=p.productPic%>">
+						<img class="card-img-top" src="<%=request.getContextPath()%>/image/<%=p.getProductPic() %>">
 							<div class="card-body">
-								<h4 class="card-title"><%=p.productName %></h4>
-								<p class="card-text"><%=p.productPrice %></p>
+								<h4 class="card-title">
+									<a href="<%=request.getContextPath() %>/product/productOne.jsp?productId=<%=p.getProductId()%>">
+										<%=p.getProductName() %>
+									</a>
+								</h4>
+								<p class="card-text"><%=p.getProductPrice() %></p>
 							</div>
 						</div>
 						<span>&nbsp;</span>
@@ -122,8 +127,8 @@
 				for(Notice n : noticeList){
 			%>
 					<tr>
-						<td><a href="<%=request.getContextPath()%>/notice/noticeOne.jsp?noticeId=<%=n.noticeId%>"><%=n.noticeId %></a></td>
-						<td><%=n.noticeTitle %></td>
+						<td><a href="<%=request.getContextPath()%>/notice/noticeOne.jsp?noticeId=<%=n.getNoticeId() %>"><%=n.getNoticeId() %></a></td>
+						<td><%=n.getNoticeTitle() %></td>
 					</tr>
 			<%
 				}

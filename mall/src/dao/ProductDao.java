@@ -19,13 +19,34 @@ public class ProductDao {
 		
 		while(rs.next()) {
 			Product p = new Product();
-			p.productId = rs.getInt("product_id");
-			p.productPic = rs.getString("product_pic");
-			p.productName = rs.getString("product_name");
-			p.productPrice = rs.getInt("product_price");
+			p.setProductId(rs.getInt("product_id"));
+			p.setProductPic(rs.getString("product_pic"));
+			p.setProductName(rs.getString("product_name"));
+			p.setProductPrice(rs.getInt("product_price"));
 			list.add(p);
 		}
 		conn.close();
 		return list;
+	}
+	
+	public Product selectProductOne(int productId) throws Exception{
+		Product p = new Product();
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql ="select * from product where product_id = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, productId);
+		ResultSet rs = stmt.executeQuery();
+		
+		if(rs.next()) {
+			p.setProductId(rs.getInt("product_id"));
+			p.setProductName(rs.getString("product_name"));
+			p.setProductPrice(rs.getInt("product_price"));
+			p.setProductContent(rs.getString("product_content"));
+			p.setProductSoldout(rs.getString("product_soldout"));
+			p.setProductPic(rs.getString("product_pic"));
+		}
+		
+		return p;
 	}
 }

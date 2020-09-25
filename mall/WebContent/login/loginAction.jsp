@@ -6,29 +6,32 @@
 		System.out.println("로그인 되어있는 상태입니다.");
 		response.sendRedirect("/mall/index.jsp");
 	}
-%>
 
-<%
 	request.setCharacterEncoding("utf-8");
 
-	String addr = request.getParameter("addr"); // 현재 주소 가져오기
-	System.out.print(addr);
-	String usersId = request.getParameter("uesersId");
-	String usersPw = request.getParameter("usersPw");
+	String usersId = request.getParameter("usersId"); //goodee@naver.com
+	String usersPw = request.getParameter("usersPw"); // 1234
 	
-	Users paraUser = new Users();
-	paraUser.usersId = usersId;
-	paraUser.usersPw = usersPw;
+	
+	Users paraUser = new Users(); // 요청한 데이터 값을 저장하는 데이터 타입
+	paraUser.setUsersId(usersId);
+	paraUser.setUsersPw(usersPw);
+	
+	System.out.println(paraUser.getUsersId());
 	
 	UsersDao usersDao = new UsersDao();
-	Users usersLogin = usersDao.usersLogin(paraUser);
+	String userId = usersDao.usersLogin(paraUser); // 세션에 저장할 아이디 //goodee@naver.com
+	System.out.println(userId);
 	
-	if(usersLogin == null){
+	if(userId == null){
 		response.sendRedirect("/mall/login/login.jsp");
 		System.out.println("로그인에 실패하였습니다.");
 	}else{
-		session.setAttribute("userId", usersLogin.usersId);
-		System.out.println("로그인에 성공하였습니다.");
+		System.out.println(userId); // goodee@naver.com
+		session.setAttribute("userId", userId);
+		
+		System.out.println(session.getAttribute("userId"));
+		System.out.println("로그인에 성공하였습니다......");
 		response.sendRedirect("/mall/index.jsp");
 	}
 %>

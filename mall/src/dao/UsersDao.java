@@ -4,23 +4,23 @@ import commons.*;
 import java.sql.*;
 
 public class UsersDao {
-	public Users usersLogin(Users users) throws Exception{
-		Users userIdPw = null;
+	public String usersLogin(Users users) throws Exception{
+		String userId = null;
 		
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
-		String sql = "select user_id, user_pw from user";
+		String sql = "select user_id from user where user_id=? and user_pw=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, users.getUsersId());
+		stmt.setString(2, users.getUsersPw());
 		ResultSet rs = stmt.executeQuery();
 		
 		if(rs.next()) {
-			userIdPw = new Users();
-			userIdPw.usersId = rs.getString("user_id");
-			userIdPw.usersPw = rs.getString("user_pw");
+			userId = rs.getString("user_id");
 		}
 		
 		conn.close();
-		return userIdPw;
+		return userId;
 	}
 	
 	public void signUpUser(Users users) throws Exception{
@@ -30,10 +30,10 @@ public class UsersDao {
 		
 		String sql = "insert into user(user_id,user_pw,user_check,user_name) VALUES(?,?,?,?)"; // sqlπÆ¿Ã ∆≤∑»¥Ÿ
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1,users.usersId);
-		stmt.setString(2,users.usersPw);
-		stmt.setString(3,users.usersCheck);
-		stmt.setNString(4,users.usersName);
+		stmt.setString(1,users.getUsersId());
+		stmt.setString(2,users.getUsersPw());
+		stmt.setString(3,users.getUsersCheck());
+		stmt.setString(4,users.getUsersName());
 		stmt.executeUpdate();
 		
 		conn.close();
