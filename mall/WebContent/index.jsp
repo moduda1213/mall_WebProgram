@@ -89,7 +89,7 @@
 					i=i+1;
 			%>
 					<td>
-						<div class="card" style="width:375px">
+						<div class="card" style="width:375px; height:485px;">
 						<img class="card-img-top" src="<%=request.getContextPath()%>/image/<%=p.getProductPic() %>">
 							<div class="card-body">
 								<h4 class="card-title">

@@ -54,7 +54,7 @@
 		if(session.getAttribute("userId") == null){
 	%>
 		<div><!-- 로그인/회원가입 메뉴바  (비로그인 상태일 때)-->
-			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 			  <!-- Links -->
 			  <ul class="navbar-nav">
 			    <li class="nav-item" >

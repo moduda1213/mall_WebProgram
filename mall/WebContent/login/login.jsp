@@ -30,7 +30,7 @@
 			<input type ="password" class="form-control" id="pwd" name = "usersPw" style="width:300px;">
 			<div>&nbsp;</div>
 			<button type = "submit" class="btn btn-secondary">로그인 </button>
-			<button type = "submit" class="btn btn-secondary"> ID/PW찾기</button>
+			<a href="<%=request.getContextPath() %>/login/searchUserForm.jsp" class="btn btn-secondary">ID/PW찾기</a>
 		</form>
 	</div>
 </div>
