@@ -5,6 +5,33 @@ import java.util.*;
 import java.sql.*;
 
 public class UsersDao {
+	// 회원 리스트 출력
+	public Users selectUserId(String userId) throws Exception{
+		System.out.println(userId+"<--userId dao");
+		
+		Users users= null;
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "select user_id, user_pw, user_check, user_name, user_withdrawal from user where user_id=?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, userId);
+		ResultSet rs = stmt.executeQuery();
+		
+		if(rs.next()) {
+			users=new Users();
+			users.setUsersId(rs.getString("user_id"));
+			System.out.println(users.getUsersId()+"<--user.getUsersId()dao");
+			users.setUsersPw(rs.getString("user_pw"));
+			System.out.println(users.getUsersPw()+"<--user.getUsersPw()dao");
+			users.setUsersCheck(rs.getString("user_check"));
+			users.setUsersName(rs.getString("user_name"));
+			System.out.println(users.getUsersName()+"<--user.getUsersName()dao");
+			users.setUsersWithdrawal(rs.getString("user_withdrawal"));
+		}
+	
+		return users;
+	}
+	
 	public String usersLogin(Users users) throws Exception{
 		String userId = null;
 		
@@ -87,6 +114,18 @@ public class UsersDao {
 		String sql = "update user set user_pw=? where user_id=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1,users.getUsersPw());
+		stmt.setString(2,users.getUsersId());
+		stmt.executeUpdate();
+		
+		conn.close();
+	}
+	
+	public void wdrUser(Users users) throws Exception{
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql="update user set user_withdrawal=? where user_id=?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1,users.getUsersWithdrawal());
 		stmt.setString(2,users.getUsersId());
 		stmt.executeUpdate();
 		

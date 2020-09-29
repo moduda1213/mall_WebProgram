@@ -1,5 +1,6 @@
 package dao;
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,5 +49,32 @@ public class ProductDao {
 		}
 		
 		return p;
+	}
+	
+	public ArrayList<Product> searchingProduct(String productName) throws Exception{
+		ArrayList<Product> list = new ArrayList<Product>();
+		System.out.println("진입");
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "SELECT product_id,product_name, product_price,product_soldout,product_pic FROM product WHERE product_name LIKE ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		System.out.println("진입");
+		stmt.setString(1,"%"+productName+"%");
+		System.out.println("진입");
+		ResultSet rs = stmt.executeQuery();
+		System.out.println("진입"); // 문제;';';;;';'
+		while(rs.next()) {
+			Product p = new Product();
+			p.setProductId(rs.getInt("product_id"));
+			p.setProductName(rs.getString("product_name"));
+			p.setProductPrice(rs.getInt("product_price"));
+			p.setProductSoldout(rs.getString("product_soldout"));
+			p.setProductPic(rs.getString("product_pic"));
+			System.out.println(p.getProductName());
+			list.add(p);
+		}
+		System.out.println("진입");
+		conn.close();
+		return list;
 	}
 }

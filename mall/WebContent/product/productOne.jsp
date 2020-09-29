@@ -44,8 +44,9 @@
 						</tr>
 						<tr>
 							<th>product_pic</th>
-							<td><img
-								src="<%=request.getContextPath()%>/image/<%=product.getProductPic()%>"></td>
+							<td>
+								<img src="<%=request.getContextPath()%>/image/<%=product.getProductPic()%>">
+							</td>
 						</tr>
 						<tr>
 							<th>product_soldout</th>

@@ -26,7 +26,7 @@
 		*/
 		
 		request.setCharacterEncoding("utf-8");
-			
+		
 		String usersName = null;
 		ArrayList<String> usersId = null;
 		if(request.getParameter("usersName") != null){ // 회원 이름 입력 시 검색
@@ -38,8 +38,6 @@
 			
 			usersId = usersDao.findUserId(usersName); // 회원 이름으로 된 아이디 불러오기
 		}
-		
-		
 	%>
 	
 	<div class ="container">
@@ -61,6 +59,7 @@
 			}else{ // 검색 했을 경우
 				System.out.println("검색 성공");
 				for(String s : usersId){
+					
 		%>
 				<div class ="row">
 					<div class="col-sm-3">

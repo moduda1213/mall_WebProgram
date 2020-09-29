@@ -24,10 +24,10 @@
 	<div class="form-group">
 		<form method="post" action="<%=request.getContextPath() %>/login/loginAction.jsp"><!-- 절대 주소 -->
 			<label for="usr">email ID:</label>
-			<input type ="text" class="form-control" id="usr" name = "usersId" style="width:300px;">
+			<input type ="text" class="form-control" id="usr" name = "usersId" style="width:300px;" value="goodee@naver.com">
 				
 			<label for="pwd">PW:</label>
-			<input type ="password" class="form-control" id="pwd" name = "usersPw" style="width:300px;">
+			<input type ="password" class="form-control" id="pwd" name = "usersPw" style="width:300px;" value="1">
 			<div>&nbsp;</div>
 			<button type = "submit" class="btn btn-secondary">로그인 </button>
 			<a href="<%=request.getContextPath() %>/login/searchUserForm.jsp" class="btn btn-secondary">ID/PW찾기</a>

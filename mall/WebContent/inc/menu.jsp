@@ -12,8 +12,8 @@
 	  	<h1><a href="<%=request.getContextPath() %>/index.jsp" data-toggle="tooltip" title="HOME으로" style= "color:black;">Goodee Shop</a></h1>
 	  </div>
 	  <div class="col">
-			<form>
-				<input type ="text" style= "width:290px; height:39px;">
+			<form method="post" action="<%=request.getContextPath()%>/search/searchingProduct.jsp">
+				<input type ="text" name="searchingText" style= "width:290px; height:39px;">
 				<button type="submit"><i class='fas fa-search' style='font-size:25px; height:30px;'></i></button>
 			</form>
 	  </div>
@@ -37,7 +37,7 @@
 			  		<div class="col-sm-3"></div>
 			  		<div class="col-sm-3"></div>
 					<div class="col-sm-3">
-						<a href="#" class='fas fa-user-alt' style='font-size:48px;color:black' data-toggle="tooltip" title="마이페이지"></a>
+						<a href="<%=request.getContextPath() %>/myPage/myPageForm.jsp" class='fas fa-user-alt' style='font-size:48px;color:black' data-toggle="tooltip" title="마이페이지"></a>
 					</div>
 					<div class="col-sm-3">
 						<a href="#" class='fas fa-shopping-cart' style='font-size:48px;color:black' data-toggle="tooltip" title="장바구니"></a>

@@ -5,7 +5,7 @@ public class Users {
 	private String usersPw; //비번
 	private String usersCheck; //본인확인을 위해 본인만 아는 단어
 	private String usersName; // 유저 이름
-	private String user_withdrawal;
+	private String usersWithdrawal;
 	
 	public String getUsersId() {
 		return usersId;
@@ -31,11 +31,11 @@ public class Users {
 	public void setUsersName(String usersName) {
 		this.usersName = usersName;
 	}
-	public String getUser_withdrawal() {
-		return user_withdrawal;
+	public String getUsersWithdrawal() {
+		return usersWithdrawal;
 	}
-	public void setUser_withdrawal(String user_withdrawal) {
-		this.user_withdrawal = user_withdrawal;
+	public void setUsersWithdrawal(String user_withdrawal) {
+		this.usersWithdrawal = user_withdrawal;
 	}
 	
 }
