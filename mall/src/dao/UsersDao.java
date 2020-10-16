@@ -87,7 +87,7 @@ public class UsersDao {
 		return list;
 	}
 	
-	//회원 pw -> id / 질문 일치 여부
+	//회원 pw -> 아이디 / 질문 일치 여부
 	public boolean searchIdCheck(Users users) throws Exception{
 		boolean ck = false; // 일치하면 true, 불일치시 false 
 		

@@ -62,7 +62,7 @@ public class ProductDao {
 		stmt.setString(1,"%"+productName+"%");
 		System.out.println("진입");
 		ResultSet rs = stmt.executeQuery();
-		System.out.println("진입"); // 문제;';';;;';'
+		System.out.println("진입"); 
 		while(rs.next()) {
 			Product p = new Product();
 			p.setProductId(rs.getInt("product_id"));
