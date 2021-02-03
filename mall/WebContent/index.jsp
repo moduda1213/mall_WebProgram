@@ -25,13 +25,14 @@
 	</div>
 	
 	<div class="row"> <!-- 전체 카테고리3 / 이미지 배너9 -->
-		<div class="col-sm-3"> <!-- 전체 카테고리 -->
+		<div class="col-sm-3 px-4"> <!-- 전체 카테고리 -->
 			<div class="btn-group-vertical">
-				<div class="btn btn-primary" style="width:200px;">전체 카테고리</div>
+				<div class="btn btn-primary" style="width:230px;height:50px;">전체 카테고리</div>
 				<%
 					for(Category c : categoryList1 ){
 				%>
-						<div class="btn btn-light" style="width:200px;"><%=c.getCategoryName() %></div>
+						<div class="btn btn-light" style="width:230px;height:50px"><%=c.getCategoryName() %></div>
+						<div></div>
 				<%
 					}
 				%>
@@ -40,24 +41,12 @@
 		<div class="col-sm-8">
 			<div id="demo" class="carousel slide" data-ride="carousel"> <!-- 슬라이드 이미지 -->
 
-			    <img src="<%=request.getContextPath() %>/image/Thanksgiving.jpeg" style = "width:800px;" alt="Thanksgiving">
+			    <img src="<%=request.getContextPath() %>/image/newYear.jpg" style = "width:800px;height:500px" alt="event">
 			</div>
 		</div>
 	</div>
 	
-	<div>&nbsp;</div>
-	
-	<div class="row"> <!-- 추천 카테고리 이미지 링크 -->
-		<%
-			for(Category c : categoryList2){
-		%>
-				<div class="col-sm-3"><a href=""><img src="<%=request.getContextPath() %>/image/<%=c.getCategoryPic() %>" class="rounded-circle" alt="Cinque Terre"></a></div>
-		<%
-			}
-		%>
-	</div>
-	
-	<div>&nbsp;</div>
+	<br>
 	
 	<%
 		Calendar today = Calendar.getInstance();
@@ -67,19 +56,7 @@
 	<!-- 카테고리별 추천상품 -->
 	<h3>오늘의 추천상품 <span class="badge badge-primary"><%=today.get(Calendar.YEAR) %>.<%=today.get(Calendar.MONTH)+1 %>.<%=today.get(Calendar.DAY_OF_MONTH) %></span></h3>
 	
-	<div>&nbsp;</div>
-	
-	<div class="btn-group btn-group-lg">  <!-- 카테고리별 추천상품 메뉴 -->
-		<%
-			for(Product p : productList){
-		%>
-	  		<button type="button" class="btn btn-light"><%=p.getProductName() %></button>
-	  	<%
-	  		}
-	  	%>
-	</div>
-	
-	<div>&nbsp;</div>
+	<br>
 	
 	<table> <!-- 카테고리별 추천상품 메뉴별 상품 목록 -->
 		<tr>
@@ -90,7 +67,8 @@
 			%>
 					<td>
 						<div class="card" style="width:375px; height:485px;">
-						<img class="card-img-top" src="<%=request.getContextPath()%>/image/<%=p.getProductPic() %>">
+						<img class="card-img-top" src="<%=request.getContextPath()%>/image/<%=p.getProductPic() %>"
+							style="width:370px;height:310px">
 							<div class="card-body">
 								<h4 class="card-title">
 									<a href="<%=request.getContextPath() %>/product/productOne.jsp?productId=<%=p.getProductId()%>">
@@ -118,7 +96,9 @@
 	%>
 	<!-- 최근 공지 2개 -->
 	<div>
-		<table>
+		<div class="text-right"><a href="<%=request.getContextPath()%>/notice/noticeList.jsp" style="color:black"><strong>전체 공지</strong></a></div>
+		
+		<table class="table table-hover">
 			<tr>
 				<th>notice_id</th>
 				<th>notice_title</th>

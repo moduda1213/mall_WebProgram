@@ -46,7 +46,8 @@
 					<input type ="text" class="form-control" id="pwd" name = "usersPw" style="width:300px;">
 					<label for="pwd">PW 확인:</label>
 					<input type ="text" class="form-control" id="pwd" name = "usersPwCk" style="width:300px;">
-					<button type="submit">비밀번호 변경</button>
+					<br>
+					<button type="submit" class="btn btn-secondary">비밀번호 변경</button>
 				</form>
 				
 		<%
@@ -60,7 +61,8 @@
 					<input type ="password" class="form-control" id="pwd" name = "usersPw" style="width:300px;">
 					<label for="pwd">PW 확인:</label>
 					<input type ="password" class="form-control" id="pwd" name = "usersPwCk" style="width:300px;">
-					<button type="submit">비밀번호 변경</button>
+					<br>
+					<button type="submit" class="btn btn-secondary">비밀번호 변경</button>
 				</form>
 				
 		<%

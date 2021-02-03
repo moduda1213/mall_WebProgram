@@ -40,7 +40,7 @@
 						<a href="<%=request.getContextPath() %>/myPage/myPageForm.jsp" class='fas fa-user-alt' style='font-size:48px;color:black' data-toggle="tooltip" title="마이페이지"></a>
 					</div>
 					<div class="col-sm-3">
-						<a href="#" class='fas fa-shopping-cart' style='font-size:48px;color:black' data-toggle="tooltip" title="장바구니"></a>
+						<a href="<%=request.getContextPath() %>/orders/myOrdersList.jsp" class='fas fa-shopping-cart' style='font-size:48px;color:black' data-toggle="tooltip" title="장바구니"></a>
 					</div>
 			  	</div>
 			  </div>

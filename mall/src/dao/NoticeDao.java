@@ -5,12 +5,13 @@ import vo.*;
 import commons.*;
 
 public class NoticeDao {
-	public ArrayList<Notice> selectNoticeList() throws Exception{ //°øÁö»çÇ× ºÒ·¯¿À±â
+	//í˜ì´ì§•)ì „ì²´ ê³µì§€ë¦¬ìŠ¤íŠ¸
+	public ArrayList<Notice> selectAllNoticeList(int beginPage, int rowPerPage) throws Exception{
 		ArrayList<Notice> list = new ArrayList<Notice>();
 		
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
-		String sql = "select notice_id,notice_title from notice order by notice_date limit 0,2";
+		String sql = "select notice_id,notice_title from notice order by notice_date DESC limit ?,5";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
 		
@@ -27,7 +28,29 @@ public class NoticeDao {
 		return list;
 	}
 	
-	public Notice selectNoticeOne(int noticeId) throws Exception{ // °øÁö»çÇ× »ó¼¼º¸±â
+	public ArrayList<Notice> selectNoticeList() throws Exception{ //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+		ArrayList<Notice> list = new ArrayList<Notice>();
+		
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "select notice_id,notice_title from notice order by notice_date DESC limit 0,5";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
+		
+		while(rs.next()) {
+			Notice n = new Notice();
+			//n.noticeId = rs.getInt("notice_id");
+			n.setNoticeId(rs.getInt("notice_id"));
+			//n.noticeTitle = rs.getNString("notice_title");
+			n.setNoticeTitle(rs.getString("notice_title"));
+			list.add(n);
+		}
+		
+		conn.close();
+		return list;
+	}
+	
+	public Notice selectNoticeOne(int noticeId) throws Exception{ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½
 		Notice n = new Notice();
 		
 		DBUtil dbUtil = new DBUtil();

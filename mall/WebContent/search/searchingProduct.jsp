@@ -31,7 +31,7 @@
 			<jsp:include page = "/inc/menu.jsp"></jsp:include> 
 		</div>
 		
-		<table class = "table">
+		<table class = "table table-hover">
 			<tr>
 				<th>상품 사진</th>
 				<th>상품 이름</th>
